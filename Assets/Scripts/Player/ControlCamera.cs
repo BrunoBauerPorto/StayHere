@@ -1,20 +1,21 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.Rendering.Universal;
 
 
 
-namespace StayHere.Camera
+namespace StayHereCamera
 {
     public class ControlCamera : MonoBehaviour
     {
-        [Header("Tempo da transição")]
+        [Header("Time Transition")]
         public float duration = 1.0f;
 
-        // Ponto B
-        static readonly Vector3 posB = new Vector3(0.283f, -0.115f, 0.221f);
-        static readonly Quaternion rotB = new Quaternion(
-            -0.71685761f, -0.02060881f, -0.01992277f, 0.69663012f
-        );
+        [Header("Vision")]
+        public Camera camPlayer;
+        [SerializeField] string screenLayer = "CamScreen";
+        [SerializeField] GameObject camRecorder;
 
         // Ponto A
         static readonly Vector3 posA = new Vector3(0.291999996f, -0.46f, 0.273000002f);
@@ -22,7 +23,14 @@ namespace StayHere.Camera
             0.06711684f, 0.00471378f, -0.03138495f, 0.99724025f
         );
 
-        [Header("Estado inicial")]
+        // Ponto B
+        static readonly Vector3 posB = new Vector3(0.283f, -0.115f, 0.221f);
+        static readonly Quaternion rotB = new Quaternion(
+            -0.71685761f, -0.02060881f, -0.01992277f, 0.69663012f
+        );
+
+       
+        [Header("Initial State")]
         public bool startAtA = true;
 
         bool isAtA;
@@ -45,12 +53,15 @@ namespace StayHere.Camera
             }
         }
 
+       
         public void ToggleCamera()
         {
             if (moveRoutine != null) return; // evita apertar durante a transição
 
             if (isAtA) StartMove(posB, rotB);
             else StartMove(posA, rotA);
+
+            
 
             isAtA = !isAtA;
         }
