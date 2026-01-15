@@ -1,0 +1,46 @@
+{
+    "version": 1,
+    "name": "Camera",
+    "maps": [
+        {
+            "name": "CameraCall",
+            "id": "ee60697a-deac-496a-a5d8-17c6909517f6",
+            "actions": [
+                {
+                    "name": "ToggleCam",
+                    "type": "Button",
+                    "id": "11c2e69d-4413-4f5e-bc6f-84c77f424936",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2653ad3a-bd2c-445a-8b8a-a34f0dd251f9",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleCam",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "31c81404-1357-426a-9d4a-cc7598980458",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleCam",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
