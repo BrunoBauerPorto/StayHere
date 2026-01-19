@@ -1,46 +1,30 @@
+using System;
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.Rendering.Universal;
-
-
 
 namespace StayHereCamera
 {
     public class ControlCamera : MonoBehaviour
     {
-        [Header("Time Transition")]
         public float duration = 1.0f;
 
-        [Header("Vision")]
-        public Camera camPlayer;
-        [SerializeField] string screenLayer = "CamScreen";
-        [SerializeField] GameObject camRecorder;
-
-        // Ponto A
-        static readonly Vector3 posA = new Vector3(0.291999996f, -0.46f, 0.273000002f);
-        static readonly Quaternion rotA = new Quaternion(
-            0.06711684f, 0.00471378f, -0.03138495f, 0.99724025f
-        );
-
-        // Ponto B
-        static readonly Vector3 posB = new Vector3(0.283f, -0.115f, 0.221f);
-        static readonly Quaternion rotB = new Quaternion(
-            -0.71685761f, -0.02060881f, -0.01992277f, 0.69663012f
-        );
-
-       
-        [Header("Initial State")]
         public bool startAtA = true;
+        public static bool isAtA { get; private set; }
 
-        bool isAtA;
+        public static event Action<bool> OnActiveCameraChanged;
+
+        static readonly Vector3 posA = new Vector3(0.291999996f, -0.46f, 0.273000002f);
+        static readonly Quaternion rotA = new Quaternion(0.06711684f, 0.00471378f, -0.03138495f, 0.99724025f);
+
+        static readonly Vector3 posB = new Vector3(0.283f, -0.115f, 0.221f);
+        static readonly Quaternion rotB = new Quaternion(-0.71685761f, -0.02060881f, -0.01992277f, 0.69663012f);
+
         Coroutine moveRoutine;
 
         void Awake()
         {
             isAtA = startAtA;
 
-            // opcional: já “encaixa” no ponto inicial
             if (isAtA)
             {
                 transform.localPosition = posA;
@@ -51,27 +35,20 @@ namespace StayHereCamera
                 transform.localPosition = posB;
                 transform.localRotation = rotB;
             }
+
+            // notifica o estado inicial
+            OnActiveCameraChanged?.Invoke(isAtA);
         }
 
-       
         public void ToggleCamera()
         {
-            if (moveRoutine != null) return; // evita apertar durante a transição
+            if (moveRoutine != null) return;
 
-            if (isAtA) StartMove(posB, rotB);
-            else StartMove(posA, rotA);
-
-            
-
-            isAtA = !isAtA;
+            if (isAtA) moveRoutine = StartCoroutine(LerpTo(posB, rotB, willBeAtA: false));
+            else moveRoutine = StartCoroutine(LerpTo(posA, rotA, willBeAtA: true));
         }
 
-        void StartMove(Vector3 targetPos, Quaternion targetRot)
-        {
-            moveRoutine = StartCoroutine(LerpTo(targetPos, targetRot));
-        }
-
-        IEnumerator LerpTo(Vector3 targetPos, Quaternion targetRot)
+        IEnumerator LerpTo(Vector3 targetPos, Quaternion targetRot, bool willBeAtA)
         {
             Vector3 startPos = transform.localPosition;
             Quaternion startRot = transform.localRotation;
@@ -82,21 +59,20 @@ namespace StayHereCamera
             while (t < 1f)
             {
                 t += Time.deltaTime * inv;
-
-                float smooth = t * t * (3f - 2f * t); // SmoothStep
+                float smooth = t * t * (3f - 2f * t);
                 transform.localPosition = Vector3.Lerp(startPos, targetPos, smooth);
                 transform.localRotation = Quaternion.Slerp(startRot, targetRot, smooth);
-
                 yield return null;
             }
 
             transform.localPosition = targetPos;
             transform.localRotation = targetRot;
 
+            // só aqui confirma a troca de câmera
+            isAtA = willBeAtA;
+            OnActiveCameraChanged?.Invoke(isAtA);
+
             moveRoutine = null;
         }
     }
-
 }
-
-
