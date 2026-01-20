@@ -2,7 +2,7 @@ using StayHereCamera;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class TVPlay : MonoBehaviour
+public class TVPlay : Interactable
 {
     public VideoPlayer tvPlay;
 
@@ -47,7 +47,6 @@ public class TVPlay : MonoBehaviour
 
     void UpdatePlayback()
     {
-        // ajuste aqui: "câmera que carrega" = A (isAtA == true)
         if (playerInside && ControlCamera.isAtA == false)
             PlayVideo();
         else

@@ -16,11 +16,15 @@ namespace StayHereCamera
         // CHAMADO AUTOMATICAMENTE PELO PlayerInput (Send Messages)
         void OnToggleCam(InputValue button)
         {
-            // garante que só dispara quando o botão é pressionado (não no release)
-            if (!button.isPressed) return;
+            if(CameraCollect.isActiveCam == true)
+            {
+                // garante que só dispara quando o botão é pressionado (não no release)
+                if (!button.isPressed) return;
 
-            if (cameraToggle != null)
-                cameraToggle.ToggleCamera();
+                if (cameraToggle != null)
+                    cameraToggle.ToggleCamera();
+            }
+
         }
     }
 }

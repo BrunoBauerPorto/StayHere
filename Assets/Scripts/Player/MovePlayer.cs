@@ -52,7 +52,7 @@ namespace StayHere.Move
 
         void MoveUpdate()
         {
-            // Direção correta: forward/right (não position)
+            // forward/right (não position)
             Vector3 moveDir = (transform.forward * MoveInput.y) + (transform.right * MoveInput.x);
             moveDir.y = 0f;
 

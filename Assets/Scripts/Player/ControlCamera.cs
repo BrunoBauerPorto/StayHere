@@ -68,7 +68,7 @@ namespace StayHereCamera
             transform.localPosition = targetPos;
             transform.localRotation = targetRot;
 
-            // só aqui confirma a troca de câmera
+            // confirma a troca de câmera
             isAtA = willBeAtA;
             OnActiveCameraChanged?.Invoke(isAtA);
 
