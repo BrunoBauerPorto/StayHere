@@ -26,7 +26,7 @@ public class LeatherTrunk : Interactable
 
         else if (isInteract == true)
         {
-            walletUiAnim.SetBool("In", false);
+            walletUiAnim.SetTrigger("Out");
             walletUi.SetActive(false);
             player.GetComponent<MovePlayer>().enabled = true;
             isInteract = false;
