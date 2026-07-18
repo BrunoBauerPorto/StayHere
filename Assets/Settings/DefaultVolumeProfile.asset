@@ -192,7 +192,7 @@ MonoBehaviour:
     m_Value: 7
   intensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.447
   response:
     m_OverrideState: 1
     m_Value: 0.8
@@ -550,7 +550,7 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.7559391}
   midtones:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: 0}
@@ -855,7 +855,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.099
+    m_Value: 0.261
 --- !u!114 &6940869943325143175
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -912,7 +912,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.08
+    m_Value: 0.11
   xMultiplier:
     m_OverrideState: 1
     m_Value: 1

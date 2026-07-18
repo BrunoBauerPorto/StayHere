@@ -8,7 +8,7 @@ namespace StayHere.Move
     {
         [Header("Movement Parameters")]
         public float maxSpeed = 3.5f;
-        public float acceleration = 12f;     // valores mais altos costumam ficar melhores
+        public float acceleration = 12f;     
         public float deceleration = 14f;
 
         public Vector3 currentVelocity { get; private set; }
@@ -16,12 +16,15 @@ namespace StayHere.Move
 
         [Header("Gravity")]
         public float gravity = -9.81f;
-        public float groundedStickForce = -2f; // mantém colado no chão
+        public float groundedStickForce = -2f; 
         float verticalVelocity;
 
         [Header("Look Parameters")]
         public Vector2 lookSensitivity = new Vector2(0.1f, 0.1f);
         public float pitchLimit = 85f;
+
+        [Header("Animations Paramaters")]
+        public Animator playerAnim;
 
         [SerializeField] float currentPitch = 0f;
         public float CurrentPitch
@@ -46,8 +49,10 @@ namespace StayHere.Move
 
         private void Update()
         {
+            if (Time.timeScale == 0f) return;
             MoveUpdate();
             LookUpdate();
+            AnimationUpdate();
         }
 
         void MoveUpdate()
@@ -94,6 +99,16 @@ namespace StayHere.Move
                 fpCamera.transform.localRotation = Quaternion.Euler(CurrentPitch, 0f, 0f);
 
             transform.Rotate(Vector3.up * input.x);
+        }
+
+        void AnimationUpdate()
+        {
+            if(playerAnim != null)
+            {
+                playerAnim.SetFloat("SpeedX", MoveInput.x);
+                playerAnim.SetFloat("SpeedY", MoveInput.y);
+            }
+            
         }
     }
 }

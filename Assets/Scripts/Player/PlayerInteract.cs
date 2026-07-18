@@ -4,11 +4,13 @@ using UnityEngine.InputSystem;
 public class PlayerInteract : MonoBehaviour
 {
     public Camera cam;
-    [SerializeField] private float distance = 3f;
+    [SerializeField] private float distance = 5f;
     [SerializeField] private LayerMask mask;
 
     private PlayerInput playerInput;
     private InputAction interactAction;
+
+  
 
     private void Awake()
     {
@@ -34,14 +36,25 @@ public class PlayerInteract : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, distance, mask))
         {
             var interactable = hit.collider.GetComponent<Interactable>();
+            var door = hit.collider.GetComponent<DoorMath>();
             if (interactable != null)
             {
-                // "WasPressedThisFrame" evita ficar interagindo todo frame segurando o botão
                 if (interactAction.WasPressedThisFrame())
                 {
                     interactable.BaseInteract();
                 }
             }
+
+            if (door != null)
+            {
+                if (interactAction.WasPressedThisFrame())
+                {
+                    Debug.Log("Open");
+                    door.InteractWithDoor(transform);
+                }
+            }
         }
+
+
     }
 }

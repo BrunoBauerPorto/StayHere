@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f963c8f626446040975dc8fcbad4e95, type: 3}
+  m_Name: PsicologicDoc
+  m_EditorClassIdentifier: Assembly-CSharp::StayHere.Items.DocumentData
+  documentTitle: "ARQUIVO M\xC9DICO CONFIDENCIAL "
+  documentImage: {fileID: 1113630518, guid: 3e2749c43b51eff44a6a46d4ca2c1b42, type: 3}
+  documentContent: "<b><color=#a32121>DEPARTAMENTO DE PSIQUIATRIA CL\xCDNICA</color></b>\r\n<b>ARQUIVO
+    M\xC9DICO CONFIDENCIAL - ACESSO RESTRITO</b>\r\n\r\n<b>PACIENTE:</b> CONFIDENCIAL\r\n<b>DATA
+    DA AVALIA\xC7\xC3O:</b> 14 de Novembro, 1999\r\n<b>DIAGN\xD3STICO:</b> Amn\xE9sia
+    Dissociativa Severa / Repress\xE3o Traum\xE1tica\r\n\r\n<b>RELAT\xD3RIO DE SESS\xC3O:</b>\r\nO
+    paciente continua apresentando um bloqueio cognitivo impenetr\xE1vel referente
+    ao \"incidente\". O trauma gerou um mecanismo de defesa t\xE3o agressivo que
+    a mente do paciente erradicou completamente a exist\xEAncia de seu irm\xE3o das
+    suas mem\xF3rias. \r\n\r\nPara o paciente, ele sempre foi filho \xFAnico. A arquitetura
+    dessa mentira interna \xE9 absoluta.\r\n\r\nDurante a sess\xE3o de hoje, tentei
+    introduzir uma fotografia antiga onde os dois apareciam juntos. A rea\xE7\xE3o
+    foi imediata e violenta. O paciente entrou em um estado de nega\xE7\xE3o profunda,
+    seguido por hiperventila\xE7\xE3o. Ele exigia, aos gritos, saber quem era a \"outra
+    crian\xE7a\" na foto olhando para ele.\r\n\r\n<b>RECOMENDA\xC7\xC3O M\xC9DICA:</b>\r\nSuspender
+    a terapia de exposi\xE7\xE3o e confronta\xE7\xE3o imediatamente. O subconsciente
+    do paciente n\xE3o est\xE1 protegendo apenas a mem\xF3ria de que ele teve um
+    irm\xE3o. Est\xE1 protegendo a mem\xF3ria do que ele fez com esse irm\xE3o naquele
+    dia. \r\n\r\nSe for\xE7armos a ruptura dessa barreira agora, a psique do paciente
+    entrar\xE1 em colapso total sob o peso da verdade. \r\n\r\n<b>ASSINADO:</b> Dr.
+    Elias Vance"
